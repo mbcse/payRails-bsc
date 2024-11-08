@@ -1,0 +1,22 @@
+const express = require('express')
+const router = express.Router()
+const sentry = require('./utils/sentry')
+const eventRouter = require('./event/routes.js')
+const fiatRouter = require('./fiatDataProvider/routes.js')
+const metatxRouter = require('./meta-tx/routes.js')
+const nativetxRouter = require('./native-tx/routes')
+const txServiceRouter = require('./txService/routes')
+const approvalRouter = require('./approval/routes')
+const txStatusServiceRouter = require('./txStatusService/routes')
+
+router.use('/event', eventRouter)
+router.use('/fiat', fiatRouter)
+router.use('/event', eventRouter)
+router.use('/metatx', metatxRouter)
+router.use('/nativetx', nativetxRouter)
+router.use('/txservice', txServiceRouter)
+router.use('/approval', approvalRouter)
+router.use('/transaction', txStatusServiceRouter)
+
+module.exports = router
+sentry.startSentry()
